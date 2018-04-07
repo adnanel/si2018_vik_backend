@@ -54,9 +54,9 @@ body {
     height: 100vh;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (max-width: 1200px) {
     .content {
-        margin-right: -70px;
+       
     }
 }
 
@@ -88,7 +88,7 @@ body {
 }
 
 .map-container {
-    min-width: 100%;
+    min-width: 80%;
     height: 600px;
     background-image:url("../images/sarajevo-map.jpg");
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -96,7 +96,7 @@ body {
 }
 
 .map-filters {
-    min-width: 100%;
+    min-width: 80%;
     min-height: 100px;
     background-color: white;
     margin-bottom: 10px;
@@ -107,11 +107,12 @@ body {
 
 .map-filter {
     padding-left: 10px;
-
+    width: 30%
 }
 
 .map-filter select {
-    width: 80%
+    min-width: 100%;
+    display: block;
 }
 
 .tab-content {
@@ -149,4 +150,43 @@ body {
     border-radius: 80%;
     background: #4286f4;
     cursor: pointer;
+}
+
+.tabela {
+        min-width: 80%;
+    min-height: 100px;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 20px 20px;
+    margin-top: 20px;
+}
+
+.form-head-button {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-right: 18px;
+}
+
+.form-button {
+    width: 49%
+}
+
+.align-right {
+    text-align: right
+}
+
+.izvjestaji {
+    min-width: 80%;
+    min-height: 100px;
+    background-color: white;
+    margin-bottom: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border: solid black 1px;
+    padding: 20px 20px;
+}
+
+.report-button {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
