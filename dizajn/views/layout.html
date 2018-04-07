@@ -48,61 +48,66 @@
         </div>
 
         <div class="row content">
-            <div class="col-md-3 vertical-navigation">
-                <div class="vertical-nav-item">
-                    <input type="radio" id="MapaVodovoda" checked="checked" value="mapa" name="activeMenu">
-                    <label for="MapaVodovoda">Mapa vodovoda</label>
-                </div>
-
-                <div class="vertical-nav-item">
-                    <input type="radio" id="KontrolaVodostaja" value="vodostaj" name="activeMenu">
-                    <label for="KontrolaVodostaja">Kontrola vodostaja</label>
-                </div>
-
-                <div class="vertical-nav-item">
-                    <input type="radio" id="KontrolaCijevi" value="cijevi" name="activeMenu">
-                    <label for="KontrolaCijevi">Kontrola cijevi</label>
-                </div>
-
+            <div class="col-md-1 vertical-navigation collapse navbar-collapse active" id="vertical-navigation">
+                
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation" class="active">
+                        <a data-toggle="pill" href="#mapa">Mapa vodovoda</a>
+                    </li>
+                    <li role="presentation">
+                        <a data-toggle="pill" href="#vodostaj">Kontrola vodostaja</a>
+                    </li>
+                    <li role="presentation">
+                        <a data-toggle="pill" href="#cijevi">Kontrola cijevi</a>
+                    </li>
+                </ul>
             </div>
 
-            <div class="col-md-9 tab-content">
-                <div class="map-filters">
-                    <div class="row">
-                        <div class="col-xs-4 map-filter">
-                            <label for="pritisakslider">
-                                Pritisak u cijevi:
-                            </label>
-                            <span id="pritisakvalue"></span>
-                            <input type="range" min="1" max="100" value="50" class="slider" id="pritisakslider">
+            <div class="col-md-10 tab-content">
+                <div id="mapa" class="tab-pane fade in active">
+                    <div class="map-filters">
+                        <div class="row">
+                            <div class="col-xs-4 map-filter">
+                                <label for="pritisakslider">
+                                    Pritisak u cijevi:
+                                </label>
+                                <span id="pritisakvalue"></span>
+                                <input type="range" min="1" max="100" value="50" class="slider" id="pritisakslider">
+                            </div>
+
+                            <div class="col-xs-4 map-filter">
+                                <label for="duzinaslider">
+                                    Dužina cijevi:
+                                </label>
+                                <span id="duzinavalue"></span>
+                                <input type="range" min="1" max="100" value="50" class="slider" id="duzinaslider">
+                            </div>
+
+                            <div class="col-xs-4 map-filter">
+                                <label for="mjerno-select">
+                                    Mjerno područje:
+                                </label>
+                                <select id="mjerno-select" name="state">
+                                    <option value="0">Sve</option>
+                                    <option value="1">Grbavica</option>
+                                    ...
+                                    <option value="2">Velešići</option>
+                                </select>
+                            </div>
+
+                            </form>
+
                         </div>
+                    </div>
 
-                        <div class="col-xs-4 map-filter">
-                            <label for="duzinaslider">
-                                Dužina cijevi:
-                            </label>
-                            <span id="duzinavalue"></span>
-                            <input type="range" min="1" max="100" value="50" class="slider" id="duzinaslider">
-                        </div>
-
-                        <div class="col-xs-4 map-filter">
-                            <label for="mjerno-select">
-                                Mjerno područje:
-                            </label>
-                            <select id="mjerno-select" name="state">
-                                <option value="0">Sve</option>
-                                <option value="1">Grbavica</option>
-                                ...
-                                <option value="2">Velešići</option>
-                            </select>
-                        </div>
-
-                        </form>
-
+                    <div class="map-container">
                     </div>
                 </div>
-
-                <div class="map-container">
+                <div id="vodostaj" class="tab-pane fade">
+                    vodostaj - work in progress
+                </div>
+                <div id="cijevi" class="tab-pane fade">
+                    cijevi - work in progress
                 </div>
             </div>
 
@@ -119,7 +124,7 @@
 </body>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         $(document).ready(function () {
             $('#mjerno-select').select2();
         });
@@ -128,4 +133,5 @@
 
 <script src="../scripts/controls.js"></script>
 <script src="../select2/js/select2.min.js"></script>
+
 </html>
