@@ -16,6 +16,13 @@
 .dropdown {
     position: relative;
     display: inline-block;
+    padding-right: 6px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .dropdown {
+       padding-right:0;
+    }
 }
 
 /* Dropdown Content (Hidden by Default) */
