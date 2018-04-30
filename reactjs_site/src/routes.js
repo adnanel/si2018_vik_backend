@@ -36,6 +36,29 @@ import Full from './containers/Full';
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
+  { path: '/pipes', exact: true, name: 'Cijevi', component: Dashboard },
+  { path: '/pipes/add', exact: true, name: 'Nova cijev', component: Dashboard },
+  { path: '/pipes/list', exact: true, name: 'Spisak cijevi', component: Dashboard },
+
+  { path: '/mstations', exact: true, name: 'Home', component: Dashboard },
+  { path: '/mstations/add', exact: true, name: 'Home', component: Dashboard },
+  { path: '/mstations/list', exact: true, name: 'Home', component: Dashboard },
+
+  { path: '/failures', exact: true, name: 'Home', component: Dashboard },
+  { path: '/failures/add', exact: true, name: 'Home', component: Dashboard },
+  { path: '/failures/list', exact: true, name: 'Home', component: Dashboard },
+
+  { path: '/constructions', exact: true, name: 'Home', component: Dashboard },
+  { path: '/constructions/add', exact: true, name: 'Home', component: Dashboard },
+  { path: '/constructions/list', exact: true, name: 'Home', component: Dashboard },
+
+  { path: '/administration', exact: true, name: 'Home', component: Dashboard },
+  { path: '/administration/reports', exact: true, name: 'Home', component: Dashboard },
+  { path: '/administration/settings', exact: true, name: 'Home', component: Dashboard },
+
+
+
+
   { path: '/', exact: true, name: 'Home', component: Full },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/theme', exact: true, name: 'Theme', component: Colors },

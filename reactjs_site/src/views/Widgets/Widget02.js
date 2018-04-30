@@ -28,7 +28,7 @@ const defaultProps = {
 
 class Widget02 extends Component {
   render() {
-    const { className, cssModule, header, mainText, icon, color, footer, link, children, variant, ...attributes } = this.props;
+    const { className, cssModule, header, footerText, mainText, icon, color, footer, link, children, variant, ...attributes } = this.props;
 
     // demo purposes only
     const padding = (variant === '0' ? { card: 'p-3', icon: 'p-3', lead: 'mt-2' } : (variant === '1' ? {
@@ -50,7 +50,7 @@ class Widget02 extends Component {
       if (footer) {
         return (
           <CardFooter className="px-3 py-2">
-            <a className="font-weight-bold font-xs btn-block text-muted" href={link}>View More
+            <a className="font-weight-bold font-xs btn-block text-muted" href={link}>{footerText}
               <i className="fa fa-angle-right float-right font-lg"></i></a>
           </CardFooter>
         );

@@ -20,31 +20,14 @@ import {
   Row,
   Table,
 } from 'reactstrap';
-import Widget03 from '../../views/Widgets/Widget03'
+import Widget02 from '../../views/Widgets/Widget02'
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import { Polyline } from "react-google-maps";
 
 const vikMapStyle = require("./vikMapStyle.json");
 
-function pipeClick(pipe) {
-  console.log(55);
-  console.log(pipe);
-}
 
-const pipes = [
-    <Polyline key={'pipe1'} path={[
-        {lat: 43.843151, lng: 18.339907},
-        {lat: 43.844151, lng: 18.349907}
-    ]}>
-    </Polyline>,
-
-    <Polyline key={'pipe2'} path={[
-        {lat: 43.843151, lng: 18.339907},
-        {lat: 43.874151, lng: 18.369907}
-    ]} onClick={pipeClick}>
-    </Polyline>
-];
 
 const MainMapComponent = withScriptjs(withGoogleMap((props) =>
     <GoogleMap
@@ -55,13 +38,46 @@ const MainMapComponent = withScriptjs(withGoogleMap((props) =>
     >
         {props.isMarkerShown && <Marker position={{ lat: 43.8407031, lng: 18.3337828 }} />}
 
-        {pipes}
+        {props.pipes}
     </GoogleMap>
 ));
 
-
-
 class Dashboard extends Component {
+  selectedPipe = null;
+
+  pipeClick(pipe) {
+      this.selectedPipe = this.pipes[this.pipes.findIndex((val, i) => { return val.key === pipe; })];
+
+      this.forceUpdate();
+  }
+
+  pipeStyleOptions = {
+      strokeColor: '#00eeff',
+      strokeWeight: 10,
+      geodesic: true
+  };
+
+  static getCoord(center, up, right, intensity) {
+    return {
+      lat: center.lat + right * intensity / 100.0,
+      lng: center.lng + up * intensity / 100.0
+    };
+  }
+
+  static start = {lat: 43.874151, lng: 18.369907};
+  pipes = [
+      <Polyline name={'Naziv cijevi'} key={'pipe1'} path={[
+          Dashboard.getCoord(Dashboard.start, 0, 0, 0),
+          Dashboard.getCoord(Dashboard.start, 1, 0, -1),
+          Dashboard.getCoord(Dashboard.start, 0, 1, -1),
+          Dashboard.getCoord(Dashboard.start, 0, 1, -2),
+          Dashboard.getCoord(Dashboard.start, 1, 1, -2),
+          Dashboard.getCoord(Dashboard.start, 2, 2, -2),
+      ]} options={this.pipeStyleOptions} onClick={(event) => this.pipeClick('pipe1')}>
+      </Polyline>
+  ];
+
+
   constructor(props) {
     super(props);
 
@@ -89,21 +105,58 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="animated fadeIn">
-        <Card>
-          <CardHeader>
-            Mapa
-          </CardHeader>
-          <CardBody>
-            <MainMapComponent isMarkerShown={false}
-                            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places"
+          <Row>
+              <Col xs="12" sm="6" lg="3">
+                  <Widget02 header="250" mainText="Cijevi" footerText="Vidi sve" icon="fa fa-cogs" color="primary" footer link="#/charts" />
+              </Col>
+              <Col xs="12" sm="6" lg="3">
+                  <Widget02 header="30" mainText="Mjerna mjesta" footerText="Vidi sve" icon="fa fa-laptop" color="info" footer />
+              </Col>
+              <Col xs="12" sm="6" lg="3">
+                  <Widget02 header="5" mainText="Kvarovi" footerText="Vidi sve" icon="fa fa-exclamation-triangle" color="danger" footer />
+              </Col>
+              <Col xs="12" sm="6" lg="3">
+                  <Widget02 header="3" mainText="Radovi" footerText="Vidi sve" icon="fa fa-wrench" color="warning" footer />
+              </Col>
+          </Row>
 
-                            loadingElement={<div style={{ height: `100%` }} />}
-                            containerElement={<div style={{ height: `400px` }} />}
-                            mapElement={<div style={{ height: `100%` }} />}
-            >
-            </MainMapComponent>
-          </CardBody>
-        </Card>
+
+          <Row>
+            <Col md={12}>
+              <Card>
+                  <CardHeader>
+                      Mapa
+                  </CardHeader>
+                  <CardBody>
+                      <MainMapComponent isMarkerShown={false}
+                                        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places"
+
+                                        pipes={this.pipes}
+                                        loadingElement={<div style={{ height: `100%` }} />}
+                                        containerElement={<div style={{ height: `400px` }} />}
+                                        mapElement={<div style={{ height: `100%` }} />}
+                      >
+                      </MainMapComponent>
+                  </CardBody>
+              </Card>
+            </Col>
+          </Row>
+
+          {this.selectedPipe !== null &&
+              <Row>
+                <Col md={12}>
+
+                    <Card>
+                        <CardHeader>
+                            {this.selectedPipe.props.name}
+                        </CardHeader>
+                        <CardBody>
+                            Haiho
+                        </CardBody>
+                    </Card>
+                </Col>
+              </Row>}
+
       </div>
     );
   }
