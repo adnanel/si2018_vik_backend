@@ -9,7 +9,7 @@ Opisani API ima REST-like<sup>[1](#footnote1)</sup> dizajn i podržava sljedeće
 // todo - Potrebno je još opisati sve objekte (atribute).
 
 ### /pipes
-Kolekcija cijevi u sistemu. Podrzava <a href='#apifilter'>filter query string</a>.
+Kolekcija cijevi u sistemu. Podrzava <a href='#api-filters'>filter query string</a>.
 
 ```
 Podržane metode:
@@ -32,7 +32,7 @@ Podržane metode:
 
 
 ### /failures
-Kolekcija kvarova u sistemu. Podrzava <a href='#apifilter'>filter query string</a>.
+Kolekcija kvarova u sistemu. Podrzava <a href='#api-filters'>filter query string</a>.
 
 ```
 Podržane metode:
