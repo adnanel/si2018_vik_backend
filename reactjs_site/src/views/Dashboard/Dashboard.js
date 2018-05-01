@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
 import { Bar, Line } from 'react-chartjs-2';
 import {
-  Badge,
-  Button,
-  ButtonDropdown,
-  ButtonGroup,
-  ButtonToolbar,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-  Col,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  Progress,
-  Row,
-  Table,
+    Badge,
+    Button,
+    ButtonDropdown,
+    ButtonGroup,
+    ButtonToolbar,
+    Card,
+    CardBody,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+    Col,
+    Dropdown,
+    DropdownItem,
+    FormGroup,
+    DropdownMenu,
+    DropdownToggle,
+    Progress,
+    Row,
+    Table, Input, Label,
 } from 'reactstrap';
+
+
 import Widget02 from '../../views/Widgets/Widget02'
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
@@ -79,14 +82,14 @@ class Dashboard extends Component {
             for ( let pipe of vals ) {
                 this.pipes.push(
                 <Polyline
-                    name={pipe.name}
                     key={pipe.name}
+                    pipeObj={pipe}
                     path={[
                         {lat: pipe.start_lat, lng: pipe.start_lng },
                         {lat: pipe.end_lat, lng: pipe.end_lng }
                     ]}
                     options={this.pipeStyleOptions}
-                    onClick={(event) => this.pipeClick('pipe1')}
+                    onClick={(event) => this.pipeClick(pipe.name)}
                 />);
             }
 
@@ -154,10 +157,48 @@ class Dashboard extends Component {
 
                     <Card>
                         <CardHeader>
-                            {this.selectedPipe.props.name}
+                            Cijev - {this.selectedPipe.props.pipeObj.name}
                         </CardHeader>
                         <CardBody>
-                            Haiho
+                            <FormGroup>
+                                <Label htmlFor="pipeId">Šifra</Label>
+                                <Input type="text" id="pipeId" readonly value={this.selectedPipe.props.pipeObj.id} />
+                            </FormGroup>
+
+
+                            <Label htmlFor="from_pos">Početna tačka</Label>
+                            <FormGroup id="from_pos" row className="my-0">
+                                <Col xs="6">
+                                    <FormGroup>
+                                        <Label htmlFor="from_lat">Latitude</Label>
+                                        <Input type="text" id="from_lat" value={this.selectedPipe.props.pipeObj.start_lat}/>
+                                    </FormGroup>
+                                </Col>
+                                <Col xs="6">
+                                    <FormGroup>
+                                        <Label htmlFor="from_lng">Longitude</Label>
+                                        <Input type="text" id="from_lng" value={this.selectedPipe.props.pipeObj.start_lng}/>
+                                    </FormGroup>
+                                </Col>
+                            </FormGroup>
+
+
+                            <Label htmlFor="to_pos">Krajnja tačka</Label>
+                            <FormGroup id="to_pos" row className="my-0">
+                                <Col xs="6">
+                                    <FormGroup>
+                                        <Label htmlFor="to_lat">Latitude</Label>
+                                        <Input type="text" id="from_lat" value={this.selectedPipe.props.pipeObj.end_lat}/>
+                                    </FormGroup>
+                                </Col>
+                                <Col xs="6">
+                                    <FormGroup>
+                                        <Label htmlFor="to_lng">Longitude</Label>
+                                        <Input type="text" id="from_lng" value={this.selectedPipe.props.pipeObj.end_lng}/>
+                                    </FormGroup>
+                                </Col>
+                            </FormGroup>
+
                         </CardBody>
                     </Card>
                 </Col>
