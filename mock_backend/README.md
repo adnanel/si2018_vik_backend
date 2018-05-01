@@ -109,5 +109,7 @@ objekta kroz API tražimo sve objekte koji zadovoljavaju relaciju
 ```
 
 
+### Footnotes
+
 <a name="footnote1">1</a>: Opisani API odstupa od REST specifikacije uglavnom kod query parametara korištenih za 
 filtriranje objekata.
