@@ -104,9 +104,12 @@ function makeListConsumer(fpath) {
     }
 
     return function(req, res) {
-        let data = JSON.parse(fs.readFileSync(fpath));
-
-        console.log(req.query);
+        let data = JSON.parse(fs.readFileSync(fpath)).filter(function(elem) {
+            if ( elem.hasOwnProperty("deleted") && elem.deleted === true ) {
+                return false;
+            }
+            return true;
+        });
 
         if ( req.query.filter !== undefined ) {
             let apiFilter = JSON.parse(req.query.filter);
