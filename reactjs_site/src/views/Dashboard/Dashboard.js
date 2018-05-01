@@ -24,6 +24,8 @@ import Widget02 from '../../views/Widgets/Widget02'
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import { Polyline } from "react-google-maps";
+import PipeApi from "../../api/PipeApi";
+import { Pipe } from "../../api/model/Pipe";
 
 const vikMapStyle = require("./vikMapStyle.json");
 
@@ -57,25 +59,7 @@ class Dashboard extends Component {
       geodesic: true
   };
 
-  static getCoord(center, up, right, intensity) {
-    return {
-      lat: center.lat + right * intensity / 100.0,
-      lng: center.lng + up * intensity / 100.0
-    };
-  }
-
-  static start = {lat: 43.874151, lng: 18.369907};
-  pipes = [
-      <Polyline name={'Naziv cijevi'} key={'pipe1'} path={[
-          Dashboard.getCoord(Dashboard.start, 0, 0, 0),
-          Dashboard.getCoord(Dashboard.start, 1, 0, -1),
-          Dashboard.getCoord(Dashboard.start, 0, 1, -1),
-          Dashboard.getCoord(Dashboard.start, 0, 1, -2),
-          Dashboard.getCoord(Dashboard.start, 1, 1, -2),
-          Dashboard.getCoord(Dashboard.start, 2, 2, -2),
-      ]} options={this.pipeStyleOptions} onClick={(event) => this.pipeClick('pipe1')}>
-      </Polyline>
-  ];
+  pipes = [];
 
 
   constructor(props) {
@@ -88,6 +72,28 @@ class Dashboard extends Component {
       dropdownOpen: false,
       radioSelected: 2,
     };
+
+    PipeApi.GetPipes().subscribe(
+        vals => {
+            this.pipes = [];
+            for ( let pipe of vals ) {
+                this.pipes.push(
+                <Polyline
+                    name={pipe.name}
+                    key={pipe.name}
+                    path={[
+                        {lat: pipe.start_lat, lng: pipe.start_lng },
+                        {lat: pipe.end_lat, lng: pipe.end_lng }
+                    ]}
+                    options={this.pipeStyleOptions}
+                    onClick={(event) => this.pipeClick('pipe1')}
+                />);
+            }
+
+            this.forceUpdate();
+        }
+    );
+
   }
 
   toggle() {
