@@ -9,7 +9,7 @@
    "operands": [
      {
        "type": "filter",
-       "operator": "eq",
+       "operator": "=",
        "operandA": "id",
        "operandB": 5
      },
@@ -19,13 +19,13 @@
        "operands": [
          {
             "type": "filter",
-            "operator": "gte",
+            "operator": ">=",
             "operandA": "pressure",
             "operandB": 2
          },
          {
             "type": "filter",
-            "operator": "lt",
+            "operator": "<",
             "operandA": "max_pressure",
             "operandB": 100
          }
@@ -40,13 +40,13 @@
 
  treba da se podrze operatori:
 
- gte - greater than equal ( >= )
- gt - greater than ( > )
- lt - lower than ( < )
- lte - lower than equal ( <= )
- eq - equals ( = )
- neq - not equals ( <> )
- in - in range ( in )
+ greater than equal ( >= )
+ greater than ( > )
+ lower than ( < )
+ lower than equal ( <= )
+ equals ( = )
+ not equals ( <> )
+ in range ( in )
 
  // todo dodati vise (focus na string comparison, case insensitive )
 
