@@ -167,6 +167,7 @@ objekta kroz API tražimo sve objekte koji zadovoljavaju relaciju
 /reactjs_site/src/api/ApiFilterGroup.js.
 /reactjs_site/src/api/ApiFilterGroup.test.js.
 ```
+Ovi objekti se prosljeđuju u API kroz GET parametar, uvijek pod nazivom "filter", u obliku enkodiranog JSON stringa.
 
 
 ## Footnotes
