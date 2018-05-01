@@ -54,17 +54,56 @@ Podržane metode:
 ```
 
 
-```
-/constructions
-```
+
+### /constructions
+Kolekcija radova u sistemu. Podrzava <a href='#api-filters'>filter query string</a>.
 
 ```
-/measure_stations
+Podržane metode:
+- GET (list constructions)
+- POST (add constructions)
+- DELETE (delete ALL constructions)
+- PUT (replace ALL constructions)
 ```
 
+
+### /constructions/:id
+Podaci o jednom Constructions objektu.
+
 ```
-/reports
+Podržane metode:
+- GET (get constructions)
+- DELETE (delete the target constructions object)
+- PATCH (update constructions)
 ```
+
+
+### /measure_stations
+Kolekcija mjernih stanica u sistemu. Podrzava <a href='#api-filters'>filter query string</a>.
+
+```
+Podržane metode:
+- GET (list measure stations)
+- POST (add measure station)
+- DELETE (delete ALL measure stations)
+- PUT (replace ALL measure stations)
+```
+
+
+### /measure_stations/:id
+Podaci o jednom MeasureStation objektu.
+
+```
+Podržane metode:
+- GET (get measure stations)
+- DELETE (delete the target measure station object)
+- PATCH (update measure station)
+```
+### /reports
+
+
+>//todo
+
 
 ## Api Filters
 Api filter object predstavlja "where klauzulu" opisanu kroz JSON. Sastoji se od 2 tipa objekta: "group" i "filter".
