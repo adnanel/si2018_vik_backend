@@ -33,12 +33,14 @@ import {
   Widgets,
 } from './views';
 import Full from './containers/Full';
+import Pipes from "./views/Pipes/Pipes";
+import PipesList from "./views/Pipes/PipesList/PipesList";
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
-  { path: '/pipes', exact: true, name: 'Cijevi', component: Dashboard },
+  { path: '/pipes', exact: true, name: 'Cijevi', component: Pipes },
   { path: '/pipes/add', exact: true, name: 'Nova cijev', component: Dashboard },
-  { path: '/pipes/list', exact: true, name: 'Spisak cijevi', component: Dashboard },
+  { path: '/pipes/list', exact: true, name: 'Spisak cijevi', component: PipesList },
 
   { path: '/mstations', exact: true, name: 'Home', component: Dashboard },
   { path: '/mstations/add', exact: true, name: 'Home', component: Dashboard },
