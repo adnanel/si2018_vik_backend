@@ -4,9 +4,30 @@ Ovaj projekat predstavlja "mock" backend za lakše testiranje implementacije API
 
 Radi lakše implementacije realnog API-a, potrebno je samo ispoštovati ispod opisani API.
 
-Opisani API ima REST-like<sup>[1](#footnote1)</sup> dizajn i podržava sljedeće rute:
+<!-- toc -->
+
+- [API rute](#api-rute)
+  * [/pipes](#pipes)
+  * [/pipes/:id](#pipesid)
+  * [/failures](#failures)
+  * [/failures/:id](#failuresid)
+  * [/constructions](#constructions)
+  * [/constructions/:id](#constructionsid)
+  * [/measure_stations](#measure_stations)
+  * [/measure_stations/:id](#measure_stationsid)
+  * [/reports](#reports)
+- [Api Filters](#api-filters)
+  * [ApiFilter object](#apifilter-object)
+  * [ApiFilterGroup object](#apifiltergroup-object)
+- [Footnotes](#footnotes)
+
+<!-- tocstop -->
 
 // todo - Potrebno je još opisati sve objekte (atribute).
+
+## API rute
+
+Opisani API ima REST-like<sup>[1](#footnote1)</sup> dizajn i podržava sljedeće rute:
 
 ### /pipes
 Kolekcija cijevi u sistemu. Podrzava <a href='#api-filters'>filter query string</a>.
@@ -148,7 +169,7 @@ objekta kroz API tražimo sve objekte koji zadovoljavaju relaciju
 ```
 
 
-### Footnotes
+## Footnotes
 
 <a name="footnote1">1</a>: Opisani API odstupa od REST specifikacije uglavnom kod query parametara korištenih za 
 filtriranje objekata.
