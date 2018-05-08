@@ -1,8 +1,4 @@
 # ViK Backend
-Ovaj projekat predstavlja "mock" backend za lakše testiranje implementacije API klijenta softverskog rješenja 
-"Nadzor Vodovodne Mreže".
-
-Radi lakše implementacije realnog API-a, potrebno je samo ispoštovati ispod opisani API.
 
 <!-- toc -->
 - [Pokretanje](#pokretanje)
