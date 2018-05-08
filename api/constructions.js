@@ -1,6 +1,7 @@
-class Constructions {
+module.exports = {
+    Constructions: {
+        placeHolder: function(/* ... */) {
 
-}
-
-
-export default Constructions;
+        }
+    }
+};
