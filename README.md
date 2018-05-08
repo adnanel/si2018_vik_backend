@@ -16,10 +16,12 @@ Radi lakše implementacije realnog API-a, potrebno je samo ispoštovati ispod op
   * [/measure_stations](#measure_stations)
   * [/measure_stations/:id](#measure_stationsid)
   * [/reports](#reports)
+- [Pagination](#pagination)
 - [Api Filters](#api-filters)
   * [ApiFilter object](#apifilter-object)
   * [ApiFilterGroup object](#apifiltergroup-object)
 - [Footnotes](#footnotes)
+
 
 <!-- tocstop -->
 
@@ -37,7 +39,7 @@ API se servira na portu 8080, što je moguće dinamički izmjeniti podešavanjem
 Opisani API ima REST-like<sup>[1](#footnote1)</sup> dizajn i podržava sljedeće rute:
 
 ### /pipes
-Kolekcija cijevi u sistemu. Podrzava <a href='#api-filters'>filter query string</a>.
+Kolekcija cijevi u sistemu. Podrzava <a href='#api-filters'>filter query string</a> i <a href='#pagination'>paginaciju</a>
 
 ```
 Podržane metode:
@@ -60,7 +62,7 @@ Podržane metode:
 
 
 ### /failures
-Kolekcija kvarova u sistemu. Podrzava <a href='#api-filters'>filter query string</a>.
+Kolekcija kvarova u sistemu. Podrzava <a href='#api-filters'>filter query string</a> i <a href='#pagination'>paginaciju</a>
 
 ```
 Podržane metode:
@@ -84,7 +86,7 @@ Podržane metode:
 
 
 ### /constructions
-Kolekcija radova u sistemu. Podrzava <a href='#api-filters'>filter query string</a>.
+Kolekcija radova u sistemu. Podrzava <a href='#api-filters'>filter query string</a> i <a href='#pagination'>paginaciju</a>
 
 ```
 Podržane metode:
@@ -107,7 +109,7 @@ Podržane metode:
 
 
 ### /measure_stations
-Kolekcija mjernih stanica u sistemu. Podrzava <a href='#api-filters'>filter query string</a>.
+Kolekcija mjernih stanica u sistemu. Podrzava <a href='#api-filters'>filter query string</a> i <a href='#pagination'>paginaciju</a>
 
 ```
 Podržane metode:
@@ -132,6 +134,14 @@ Podržane metode:
 
 >//todo
 
+## Pagination
+Sve API rute za koje je rečeno da podržavaju paginaciju mogu primiti sljedeća 2 GET parametra:
+
+- `page` - Redni broj stranice (počevši od 1)
+- `itemsPerPage` - Broj unosa po stranici 
+
+Iako ovi parametri nisu obavezni, podrazumjevane vrijednosti nisu specificirane i njihovu vrijednost diktira autor
+odgovarajuće API rute.
 
 ## Api Filters
 Api filter object predstavlja "where klauzulu" opisanu kroz JSON. Sastoji se od 2 tipa objekta: "group" i "filter".
@@ -180,4 +190,4 @@ Ovi objekti se prosljeđuju u API kroz GET parametar, uvijek pod nazivom "filter
 ## Footnotes
 
 <a name="footnote1">1</a>: Opisani API odstupa od REST specifikacije uglavnom kod query parametara korištenih za 
-filtriranje objekata.
+filtriranje objekata i paginaciju.
