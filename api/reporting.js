@@ -36,17 +36,17 @@ module.exports = {
                 },
                 {
                     "activity": "mstation_add",
-                    "user_id": 0,
+                    "user_id": 1,
                     "timestamp": (new Date()).getTime() / 1000
                 },
                 {
                     "activity": "mstation_remove",
-                    "user_id": 0,
+                    "user_id": 1,
                     "timestamp": (new Date()).getTime() / 1000
                 },
                 {
                     "activity": "failure_add",
-                    "user_id": 0,
+                    "user_id": 1,
                     "timestamp": (new Date()).getTime() / 1000
                 },
                 {
@@ -56,7 +56,8 @@ module.exports = {
                 }
             ];
 
-         return FilterUtils.applyFilter(dummy, filter);
+         FilterUtils.applyFilter(dummy, filter);
+         return dummy;
       }
     }
 
