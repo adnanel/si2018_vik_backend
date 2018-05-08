@@ -1,4 +1,4 @@
-# Mock Backend
+# ViK Backend
 Ovaj projekat predstavlja "mock" backend za lakše testiranje implementacije API klijenta softverskog rješenja 
 "Nadzor Vodovodne Mreže".
 
