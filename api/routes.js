@@ -1,5 +1,5 @@
 const FilterUtils = require('./filter_utils').FilterUtils;
-const Reporting = require('./reporting');
+const Reporting = require('./reporting').Reporting;
 const fs = require('fs');
 
 

@@ -62,18 +62,18 @@ module.exports = {
 
         filterValid: function(entry, filter) {
             if (filter.type === 'filter') {
-                let compareFun = makeCompareFun(filter.operator);
+                let compareFun = this.makeCompareFun(filter.operator);
 
                 let opA = filter.operandA;
                 let opB = filter.operandB;
 
-                if (!isLiteral(opA)) {
+                if (!this.isLiteral(opA)) {
                     opA = entry[opA];
                 } else if (typeof opA === 'string') {
                     opA = opA.substr(1, opA.length - 2);
                 }
 
-                if (!isLiteral(opB)) {
+                if (!this.isLiteral(opB)) {
                     opB = entry[opB];
                 } else if (typeof opB === 'string') {
                     opB = opB.substr(1, opB.length - 2);
@@ -82,7 +82,7 @@ module.exports = {
                 return compareFun(opA, opB);
             } else if (filter.type === 'group') {
                 for (let subfilter of filter.operands) {
-                    let isValid = filterValid(entry, subfilter);
+                    let isValid = this.filterValid(entry, subfilter);
 
                     if (!isValid && filter.operator.toUpperCase() === 'AND') {
                         // short-circuit, if one is false then we don't need to check the rest.
@@ -100,10 +100,14 @@ module.exports = {
         },
 
         applyFilter: function(data, filter) {
+            if ( filter === undefined || filter === null ) {
+                return;
+            }
+
             for (let i = 0; i < data.length; ++i) {
                 let entry = data[i];
 
-                if (!filterValid(entry, filter)) {
+                if (!this.filterValid(entry, filter)) {
                     data.splice(i, 1);
                     --i;
                 }
