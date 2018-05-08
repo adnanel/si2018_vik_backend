@@ -1,6 +1,5 @@
-import Reporting from "./reporting";
-import {applyFilter} from "./filter_utils";
-
+const FilterUtils = require('./filter_utils').FilterUtils;
+const Reporting = require('./reporting');
 const fs = require('fs');
 
 
@@ -20,7 +19,7 @@ function makeListConsumer(fpath) {
         if ( req.query.filter !== undefined ) {
             let apiFilter = JSON.parse(req.query.filter);
 
-            applyFilter(data, apiFilter);
+            FilterUtils.applyFilter(data, apiFilter);
         }
 
 

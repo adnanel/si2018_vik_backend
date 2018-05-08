@@ -5,7 +5,7 @@ Ovaj projekat predstavlja "mock" backend za lakše testiranje implementacije API
 Radi lakše implementacije realnog API-a, potrebno je samo ispoštovati ispod opisani API.
 
 <!-- toc -->
-
+- [Pokretanje](#pokretanje)
 - [API rute](#api-rute)
   * [/pipes](#pipes)
   * [/pipes/:id](#pipesid)
@@ -24,6 +24,13 @@ Radi lakše implementacije realnog API-a, potrebno je samo ispoštovati ispod op
 <!-- tocstop -->
 
 // todo - Potrebno je još opisati sve objekte (atribute).
+
+## Pokretanje
+Za pokretanje API servera dovoljno je izvršiti
+```
+node index
+```
+API se servira na portu 8080, što je moguće dinamički izmjeniti podešavanjem PORT environment varijable.
 
 ## API rute
 

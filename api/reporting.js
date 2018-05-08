@@ -1,7 +1,7 @@
-import {applyFilter} from "./filter_utils";
+const FilterUtils = require('./filter_utils').FilterUtils;
 
 class Reporting {
-    static GenerateReport(filter: ApiFilter|ApiFilterGroup) {
+    static GenerateReport(filter) {
         const dummy = [
             {
                 "activity": "pipe_add",
@@ -55,9 +55,7 @@ class Reporting {
             }
         ];
         
-        return applyFilter(dummy, filter);
+        return FilterUtils.applyFilter(dummy, filter);
     }
 }
-
-export default Reporting;
 
