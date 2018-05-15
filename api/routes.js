@@ -29,7 +29,7 @@ function makeListConsumer(fpath) {
 
 module.exports = {
     registerRoutes: function registerRoutes(express) {
-        express.get('/pipes', makeListConsumer(__dirname + '/repo/pipes.json'));
+        //express.get('/pipes', makeListConsumer(__dirname + '/repo/pipes.json'));
 
         express.get('/vodostaji', makeListConsumer(__dirname + '/repo/vodostaji.json'));
         // reporting
