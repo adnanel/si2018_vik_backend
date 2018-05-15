@@ -87,7 +87,9 @@ router.put('/pipes', function(req,res,next){
 
 //get pipe
 router.get('/pipes/:id', function(req,res,next){
-
+Pipe.findById({_id: req.params.id}).then(function(pipe){
+    res.send(pipe);
+});
 });
 
 //delete pipe
@@ -97,7 +99,10 @@ router.delete('/pipes/:id', function(req,res,next){
 
 //update pipe
 router.patch('/pipes/:id', function(req,res,next){
-
+    console.log(req);
+    Pipe.findByIdAndUpdate({_id: req.params.id},{status:"workInProgress"}).then(function(pipe){
+        res.send(pipe);
+    });
 });
 
 //pomocne
