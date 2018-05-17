@@ -37,10 +37,22 @@ module.exports = {
             let apiFilter = null;
             if ( req.query.filter !== undefined ) {
                 apiFilter = JSON.parse(req.query.filter);
+            } else {
+                apiFilter = {
+                    type: "group",
+                    operator: "and",
+                    operands: []
+                };
             }
 
-            Reporting.GenerateReport(apiFilter).then(function(report) {
-                res.send(JSON.stringify(report));
+
+            Reporting.GenerateReport(apiFilter, req.query.page, req.query.itemsPerPage).then(function(report) {
+                Reporting.ReportCount(apiFilter).then(count => {
+                    res.send(JSON.stringify({
+                        data: report,
+                        total: count
+                    }));
+                })
             });
         });
     }

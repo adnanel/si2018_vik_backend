@@ -23,8 +23,11 @@ module.exports = {
         LogFailureAdd: function(userId) {logEvent(userId, 'failure_add');},
         LogFailureRemove: function(userId) {logEvent(userId, 'failure_remove');},
 
-        GenerateReport: function(filter) {
-            return LoggingEvent.find();
+        GenerateReport: function(filter, page, perPage) {
+            return LoggingEvent.find().skip(parseInt(page * perPage)).limit(parseInt(perPage));
+        },
+        ReportCount: function(filter) {
+            return LoggingEvent.count();
         }
     },
     Routing: {
