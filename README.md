@@ -126,9 +126,12 @@ Podržane metode:
 - PATCH (update measure station)
 ```
 ### /reports
+Dobavljanje izvještaja o dnevnim aktivnostima.
 
-
->//todo
+```
+Podržane metode:
+- GET (get activity report)
+```
 
 ## Pagination
 Sve API rute za koje je rečeno da podržavaju paginaciju mogu primiti sljedeća 2 GET parametra:

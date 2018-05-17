@@ -13,6 +13,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use('/api', apiRoutes);
 
+app.use('/', apiRoutes);
+
 routes.registerRoutes(app);
 //error handling middleware
 app.use(function(err,req,res,next){

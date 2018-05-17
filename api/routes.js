@@ -33,13 +33,15 @@ module.exports = {
 
         express.get('/vodostaji', makeListConsumer(__dirname + '/repo/vodostaji.json'));
         // reporting
-        express.get('/report', function(req, res) {
+        express.get('/api/report', function(req, res) {
             let apiFilter = null;
             if ( req.query.filter !== undefined ) {
                 apiFilter = JSON.parse(req.query.filter);
             }
 
-            res.send( JSON.stringify(Reporting.GenerateReport(apiFilter)) );
+            Reporting.GenerateReport(apiFilter).then(function(report) {
+                res.send(JSON.stringify(report));
+            });
         });
     }
 };
