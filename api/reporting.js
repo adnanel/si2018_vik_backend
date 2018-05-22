@@ -1,64 +1,37 @@
 const FilterUtils = require('./filter_utils').FilterUtils;
+const LoggingEvent = require('./../models/logged_event');
+
+
+logEvent = function(userId, action) {
+    LoggingEvent.create({
+        user_id: userId,
+        activity: action
+    })
+};
+
 
 module.exports = {
     Reporting: {
-        GenerateReport: function(filter) {
-            const dummy = [
-                {
-                    "activity": "pipe_add",
-                    "user_id": 0,
-                    "timestamp": (new Date()).getTime() / 1000
-                },
-                {
-                    "activity": "section_disable",
-                    "user_id": 0,
-                    "timestamp": (new Date()).getTime() / 1000
-                },
-                {
-                    "activity": "section_enable",
-                    "user_id": 0,
-                    "timestamp": (new Date()).getTime() / 1000
-                },
-                {
-                    "activity": "pipe_remove",
-                    "user_id": 0,
-                    "timestamp": (new Date()).getTime() / 1000
-                },
-                {
-                    "activity": "construction_add",
-                    "user_id": 0,
-                    "timestamp": (new Date()).getTime() / 1000
-                },
-                {
-                    "activity": "construction_remove",
-                    "user_id": 0,
-                    "timestamp": (new Date()).getTime() / 1000
-                },
-                {
-                    "activity": "mstation_add",
-                    "user_id": 1,
-                    "timestamp": (new Date()).getTime() / 1000
-                },
-                {
-                    "activity": "mstation_remove",
-                    "user_id": 1,
-                    "timestamp": (new Date()).getTime() / 1000
-                },
-                {
-                    "activity": "failure_add",
-                    "user_id": 1,
-                    "timestamp": (new Date()).getTime() / 1000
-                },
-                {
-                    "activity": "failure_remove",
-                    "user_id": 0,
-                    "timestamp": (new Date()).getTime() / 1000
-                }
-            ];
+        LogPipeAdd: function(userId) {logEvent(userId, 'pipe_add');},
+        LogSectionDisable: function(userId) {logEvent(userId, 'section_disable');},
+        LogSectionEnable: function(userId) {logEvent(userId, 'section_enable');},
+        LogPipeRemove: function(userId) {logEvent(userId, 'pipe_remove');},
+        LogConstructionAdd: function(userId) {logEvent(userId, 'construction_add');},
+        LogConstructionRemove: function(userId) {logEvent(userId, 'construction_remove');},
+        LogMstationAdd: function(userId) {logEvent(userId, 'mstation_add');},
+        LogMstationRemove: function(userId) {logEvent(userId, 'mstation_remove');},
+        LogFailureAdd: function(userId) {logEvent(userId, 'failure_add');},
+        LogFailureRemove: function(userId) {logEvent(userId, 'failure_remove');},
 
-         FilterUtils.applyFilter(dummy, filter);
-         return dummy;
-      }
+        GenerateReport: function(filter, page, perPage) {
+            return LoggingEvent.find().skip(parseInt(page * perPage)).limit(parseInt(perPage));
+        },
+        ReportCount: function(filter) {
+            return LoggingEvent.count();
+        }
+    },
+    Routing: {
+
     }
 
 };
