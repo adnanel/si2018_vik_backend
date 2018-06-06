@@ -13,14 +13,12 @@ router.get('/vodostaji', function(req,res,next){
 //Create water_level
 router.post('/vodostaji', function(req,res,next){
     console.log( " OOVVVVVOOOOOOOOOOO ");
-    const {name,value,created_by,lat,lng,pipe} = req.body;
+    const {value,created_by,lat,lng} = req.body;
     Vodostaj.create({
-        name:name,
         value:value,
         created_by:created_by,
         lat:lat,
-        lng:lng,
-        pipe:pipe
+        lng:lng
     }).then(function(vodostaji){
         res.send("Uspjesno dodan vodostaj");
         console.log(vodostaji);
