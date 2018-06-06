@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const WaterLevelSchema = new Schema({
+    name:{
+        type: String
+    },
     value:{
         type: Number,
         required: [true]
@@ -13,6 +16,18 @@ const WaterLevelSchema = new Schema({
     deleted: {
         type:Boolean,
         default: false
+    },
+    lat: {
+        type: Number,
+        required: [true]
+    },
+    lng: {
+        type: Number,
+        required: [true]
+    },
+    pipe_id: {
+        type: Schema.Types.ObjectId,
+        ref: 'pipes'
     }
 }, 
 {timestamps: true}
